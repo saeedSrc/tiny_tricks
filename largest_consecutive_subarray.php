@@ -29,23 +29,30 @@ class Main
 
     private static function isConsecutive(&$A, $i, $j, $min, $max)
     {
-        if ($max - $min != $j - $i)
-        {
-            return false;
-        }
-        $visited = array_fill(0,$j - $i + 1,false);
-        for ($k = $i; $k <= $j; $k++)
-        {
-            if ($visited[$A[$k] - $min])
-            {
+//        if ($max - $min != $j - $i) {
+//            return false;
+//        }
+//
+//        $visited = array_fill(0,$j - $i + 1,false);
+//        for ($k = $i; $k <= $j; $k++)
+//        {
+//            if ($visited[$A[$k] - $min])
+//            {
+//                return false;
+//            }
+//            $visited[$A[$k] - $min] = true;
+//        }
+        $b = array_slice($A, $i, $j+1);
+        for ($k = 0; $k < $j -$i +1; $k++) {
+            if(!in_array($min + $k, $b))  {
                 return false;
             }
-            $visited[$A[$k] - $min] = true;
-        }
+        };
         return true;
     }
     public static function findMaxSubarray(&$A)
     {
+
         $len = 1;
         $start = 0;
         $end = 0;
@@ -73,7 +80,7 @@ class Main
     public static function findLargestConsecutiveSubarray(&$args)
     {
         $A = array(
-    1,4,2,7,10, 8,9, 6
+    8, 10, 1,6, 4, 2,3, 5, 7, 9, 11, 13, 12
         );
         Main::findMaxSubarray($A);
     }
