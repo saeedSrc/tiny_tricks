@@ -1,6 +1,6 @@
 <?php
 /* This class are provide by kalkicode.com */
-class JavaToPhp {
+class Helper {
     public static function java_lang_math_min($a, $b)
     {
         // Method signature
@@ -55,8 +55,8 @@ class Main
             $max_val = $A[$i];
             for ($j = $i + 1; $j < count($A); $j++)
             {
-                $min_val = JavaToPhp::java_lang_math_min($min_val,$A[$j]);
-                $max_val = JavaToPhp::java_lang_math_max($max_val,$A[$j]);
+                $min_val = Helper::java_lang_math_min($min_val,$A[$j]);
+                $max_val = Helper::java_lang_math_max($max_val,$A[$j]);
                 if (Main::isConsecutive($A, $i, $j, $min_val, $max_val))
                 {
                     if ($len < $max_val - $min_val + 1)
@@ -73,7 +73,7 @@ class Main
     public static function findLargestConsecutiveSubarray(&$args)
     {
         $A = array(
-            1, 102, 2, 3, 1, 2
+    1,4,2,7,10, 8,9, 6
         );
         Main::findMaxSubarray($A);
     }
