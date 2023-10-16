@@ -33,7 +33,7 @@ class Main
     public static function main(&$args)
     {
         $nums = array(
-            1,2, 4, -1, 3
+          2, -1, 2, 3 ,0
 
         );
         $target = 5;
