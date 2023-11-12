@@ -26,7 +26,7 @@ class Main
     public static function main(&$args)
     {
         $A = array(
-            9, 6, 8, 3, 7
+            1,2,3,4,5,6,7
         );
         Main::rearrangeArray($A);
         echo json_encode($A),"\n";
