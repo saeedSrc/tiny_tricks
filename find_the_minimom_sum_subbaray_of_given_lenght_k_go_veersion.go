@@ -19,7 +19,7 @@ func FindSubarray(arr []int, k int) {
 	minWindow := math.MaxInt64
 
 	// stores ending index of the minimum sum subarray found so far
-	last := 0
+	last int := 0
 
 	for i := 0; i < len(arr); i++ {
 		// add the current element to the window
