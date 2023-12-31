@@ -1,33 +1,39 @@
 <?php
 
+// Function to print subarray having a given sum using hashing
+function findSubarray($nums, $target)
+{
+    // create an empty map
+    $map = array();
 
-class Main {
+    // insert (0, -1) pair into the set to handle the case when a
+    // subarray with the given sum starts from index 0
+    $map[10] = -1;
 
+    // keep track of the sum of elements so far
+    $sum_so_far = 0;
 
-    public static function getSubarrayHavingGivenSum($array, $k)  {
-        $sum = 0;
-        $last_seen_index = -1;
-         for ($i=0; $i < count($array) -1 ; $i++) {
-             $sum+= $array[$i];
-             if ($sum > $k) {
-                 $last_seen_index++;
-                 $sum = $sum - $array[$last_seen_index];
-             }
+    // traverse the given array
+    foreach ($nums as $i => $num) {
+        // update `sum_so_far`
+        $sum_so_far += $num;
 
-             if ($sum == $k)
-                 echo $last_seen_index  +1, " ", $i;
-         }
+        // if `sum_so_far - target` is seen before, we have found
+        // the subarray with sum equal to `target`
+        echo $sum_so_far . PHP_EOL;
+        if (array_key_exists($sum_so_far - $target, $map)) {
+            echo "Subarray found [" . ($map[$sum_so_far - $target] + 1) . "–" . $i . "]" . PHP_EOL;
+            return;
+        }
+
+        // insert (current sum, current index) pair into the map
+        $map[$sum_so_far] = $i;
     }
-
-    public static function main($A, $k) {
-
-
-        Main::getSubarrayHavingGivenSum($A,  $k);
-    }
-
 }
 
-$A = [2, 6, 0, 9, 7, 3, 1, 4, 1, 10];
-$k = 15;
+// an integer array
+$nums = array(-1, 2, 0, 2, -1, 4);
+$target = 3;
 
-Main::main($A, $k);
+findSubarray($nums, $target);
+?>
